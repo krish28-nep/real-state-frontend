@@ -1,26 +1,187 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fcf8fa;
+  --foreground: #0f172a;
+  --surface: #ffffff;
+  --surface-muted: #f8fafc;
+  --border: #cbd5e1;
+  --primary: #0f172a;
+  --primary-hover: #1e293b;
+  --primary-active: #020617;
+  --primary-foreground: #ffffff;
+  --secondary: #d97706;
+  --secondary-hover: #b45309;
+  --secondary-active: #92400e;
+  --secondary-foreground: #ffffff;
+  --tertiary: #fcf8fa;
+  --tertiary-hover: #f7edf2;
+  --tertiary-active: #f0e1e9;
+  --tertiary-foreground: #0f172a;
+  --neutral: #64748b;
+  --neutral-hover: #475569;
+  --neutral-active: #334155;
+  --neutral-foreground: #ffffff;
+  --danger: #dc2626;
+  --danger-hover: #b91c1c;
+  --danger-active: #991b1b;
+  --danger-foreground: #ffffff;
+  --ring: #d97706;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-active: var(--primary-active);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-hover: var(--secondary-hover);
+  --color-secondary-active: var(--secondary-active);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-tertiary: var(--tertiary);
+  --color-tertiary-hover: var(--tertiary-hover);
+  --color-tertiary-active: var(--tertiary-active);
+  --color-tertiary-foreground: var(--tertiary-foreground);
+  --color-neutral: var(--neutral);
+  --color-neutral-hover: var(--neutral-hover);
+  --color-neutral-active: var(--neutral-active);
+  --color-neutral-foreground: var(--neutral-foreground);
+  --color-danger: var(--danger);
+  --color-danger-hover: var(--danger-hover);
+  --color-danger-active: var(--danger-active);
+  --color-danger-foreground: var(--danger-foreground);
+  --color-ring: var(--ring);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer components {
+  .btn {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid transparent;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0;
+    text-decoration: none;
+    transition:
+      background-color 160ms ease,
+      border-color 160ms ease,
+      color 160ms ease,
+      box-shadow 160ms ease,
+      transform 160ms ease;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .btn:active {
+    transform: translateY(0);
+  }
+
+  .btn:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  .btn:disabled,
+  .btn[aria-disabled="true"] {
+    cursor: not-allowed;
+    opacity: 0.55;
+    transform: none;
+  }
+
+  .btn-primary {
+    background: var(--primary);
+    color: var(--primary-foreground);
+    box-shadow: 0 10px 20px color-mix(in srgb, var(--primary) 18%, transparent);
+  }
+
+  .btn-primary:hover {
+    background: var(--primary-hover);
+  }
+
+  .btn-primary:active {
+    background: var(--primary-active);
+    box-shadow: 0 6px 12px color-mix(in srgb, var(--primary) 16%, transparent);
+  }
+
+  .btn-secondary {
+    background: var(--secondary);
+    color: var(--secondary-foreground);
+    box-shadow: 0 10px 20px color-mix(in srgb, var(--secondary) 18%, transparent);
+  }
+
+  .btn-secondary:hover {
+    background: var(--secondary-hover);
+  }
+
+  .btn-secondary:active {
+    background: var(--secondary-active);
+    box-shadow: 0 6px 12px color-mix(in srgb, var(--secondary) 16%, transparent);
+  }
+
+  .btn-tertiary {
+    border-color: var(--border);
+    background: var(--tertiary);
+    color: var(--tertiary-foreground);
+  }
+
+  .btn-tertiary:hover {
+    border-color: var(--neutral);
+    background: var(--tertiary-hover);
+  }
+
+  .btn-tertiary:active {
+    border-color: var(--neutral-hover);
+    background: var(--tertiary-active);
+  }
+
+  .btn-neutral {
+    background: var(--neutral);
+    color: var(--neutral-foreground);
+  }
+
+  .btn-neutral:hover {
+    background: var(--neutral-hover);
+  }
+
+  .btn-neutral:active {
+    background: var(--neutral-active);
+  }
+
+  .btn-danger {
+    background: var(--danger);
+    color: var(--danger-foreground);
+    box-shadow: 0 10px 20px color-mix(in srgb, var(--danger) 16%, transparent);
+  }
+
+  .btn-danger:hover {
+    background: var(--danger-hover);
+  }
+
+  .btn-danger:active {
+    background: var(--danger-active);
+    box-shadow: 0 6px 12px color-mix(in srgb, var(--danger) 14%, transparent);
+  }
 }
