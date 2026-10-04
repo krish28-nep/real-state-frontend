@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const navLinks = [
   { name: "Find Rentals", href: "/", active: true },
-  { name: "List Property", href: "/list-property" },
+  { name: "List Property", href: "/property" },
   { name: "Help", href: "/help" },
   { name: "About Us", href: "/about" },
 ];
@@ -22,7 +22,7 @@ const authLinks = [
 
 export default function Header() {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 w-full">
+    <header className="sticky bg-background inset-x-0 top-0 z-50 w-full">
       <div className="w-full px-6">
         <div className="flex h-16 items-center justify-between">
           <h1 className="text-2xl font-bold text-primary">Rent Estate</h1>
