@@ -13,6 +13,12 @@ export interface RegisterCredentials extends LoginCredentials {
 
 interface AuthResponse {
   accessToken: string;
+  user: {
+    id: number;
+    fullName: string;
+    email: string;
+    role: "TENANT" | "LANDLORD" | "ADMIN";
+  };
 }
 
 async function authenticate(path: string, credentials: LoginCredentials | RegisterCredentials) {

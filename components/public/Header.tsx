@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
   { name: "Find Rentals", href: "/", active: true },
@@ -21,6 +24,10 @@ const authLinks = [
 ];
 
 export default function Header() {
+  const pathname = usePathname();
+
+  if (pathname.startsWith("/landlord")) return null;
+
   return (
     <header className="sticky bg-background inset-x-0 top-0 z-50 w-full">
       <div className="w-full px-6">

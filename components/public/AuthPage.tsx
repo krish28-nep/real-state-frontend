@@ -1,9 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { getApiErrorMessage, login, register as registerAccount } from "@/lib/api";
+import { useAuth } from "@/components/auth/AuthContext";
 
 type AuthMode = "login" | "register";
 
@@ -19,6 +21,8 @@ interface AuthFormValues {
 }
 
 export default function AuthPage({ initialMode }: AuthPageProps) {
+  const router = useRouter();
+  const { setSession } = useAuth();
   const [mode, setMode] = useState<AuthMode>(initialMode);
   const [successMessage, setSuccessMessage] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
@@ -38,14 +42,20 @@ export default function AuthPage({ initialMode }: AuthPageProps) {
 
     try {
       if (mode === "login") {
-        await login({ email: values.email, password: values.password });
+        const response = await login({ email: values.email, password: values.password });
+        setSession(response.accessToken, response.user);
+        if (response.user.role === "LANDLORD") {
+          router.push("/landlord/dashboard");
+          return;
+        }
       } else {
-        await registerAccount({
+        const response = await registerAccount({
           fullName: values.fullName ?? "",
           email: values.email,
           password: values.password,
           role: values.role ?? "TENANT",
         });
+        setSession(response.accessToken, response.user);
       }
       setSuccessMessage(mode === "login" ? "You are signed in." : "Your account is ready.");
       setIsSuccess(true);
