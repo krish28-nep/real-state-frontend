@@ -32,7 +32,7 @@ export default function Header() {
     <header className="sticky bg-background inset-x-0 top-0 z-50 w-full">
       <div className="w-full px-6">
         <div className="flex h-16 items-center justify-between">
-          <h1 className="text-2xl font-bold text-primary">Rent Estate</h1>
+          <h1 className="text-2xl font-bold text-primary-medium">Rent Estate</h1>
 
           <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
@@ -41,8 +41,8 @@ export default function Header() {
                 href={link.href}
                 className={
                   link.active
-                    ? "border-b-2 border-primary pb-1 text-sm font-medium text-primary"
-                    : "text-sm font-medium text-neutral transition-colors hover:text-primary"
+                    ? "border-b-2 border-primary pb-1 text-sm font-medium text-primary-medium"
+                    : "text-sm font-medium text-neutral-muted transition-colors hover:text-primary-medium"
                 }
               >
                 {link.name}
@@ -58,7 +58,7 @@ export default function Header() {
                 className={
                   link.variant === "filled"
                     ? "rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-sm transition-all hover:bg-primary-hover active:scale-95"
-                    : "rounded-lg border border-border bg-surface/75 px-4 py-2 text-sm font-medium text-primary shadow-sm transition-colors hover:bg-surface"
+                    : "rounded-lg border border-surface-border-cool bg-surface/75 px-4 py-2 text-sm font-medium text-primary-medium shadow-sm transition-colors hover:bg-surface"
                 }
               >
                 {link.name}

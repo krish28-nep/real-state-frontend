@@ -78,27 +78,27 @@ export default function AuthPage({ initialMode }: AuthPageProps) {
     <main className="flex min-h-screen items-center justify-center px-5 pb-10 pt-24">
       <section className="w-full max-w-md">
         <div className="mb-7 text-center">
-          <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-secondary">
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-secondary-light">
             Rent Estate
           </p>
-          <h1 className="text-3xl font-bold text-primary">
+          <h1 className="text-3xl font-bold text-primary-medium">
             {mode === "login" ? "Welcome back" : "Find your place"}
           </h1>
-          <p className="mt-2 text-sm text-neutral">
+          <p className="mt-2 text-sm text-neutral-muted">
             {mode === "login"
               ? "Sign in to continue to your account."
               : "Create an account to start your next chapter."}
           </p>
         </div>
 
-        <div className="rounded-lg border border-border bg-surface p-6 shadow-xl shadow-primary/5 sm:p-8">
-          <div className="mb-7 grid grid-cols-2 rounded-md bg-surface-muted p-1" role="tablist" aria-label="Account access">
+        <div className="rounded-lg border border-surface-border-cool bg-surface p-6 shadow-xl shadow-primary/5 sm:p-8">
+          <div className="mb-7 grid grid-cols-2 rounded-md bg-surface-cool-muted p-1" role="tablist" aria-label="Account access">
             <button
               type="button"
               role="tab"
               aria-selected={mode === "login"}
               onClick={() => changeMode("login")}
-              className={`min-h-10 rounded px-3 text-sm font-semibold transition-colors ${mode === "login" ? "bg-surface text-primary shadow-sm" : "text-neutral hover:text-primary"}`}
+              className={`min-h-10 rounded px-3 text-sm font-semibold transition-colors ${mode === "login" ? "bg-surface text-primary-medium shadow-sm" : "text-neutral-muted hover:text-primary-medium"}`}
             >
               Sign in
             </button>
@@ -107,7 +107,7 @@ export default function AuthPage({ initialMode }: AuthPageProps) {
               role="tab"
               aria-selected={mode === "register"}
               onClick={() => changeMode("register")}
-              className={`min-h-10 rounded px-3 text-sm font-semibold transition-colors ${mode === "register" ? "bg-surface text-primary shadow-sm" : "text-neutral hover:text-primary"}`}
+              className={`min-h-10 rounded px-3 text-sm font-semibold transition-colors ${mode === "register" ? "bg-surface text-primary-medium shadow-sm" : "text-neutral-muted hover:text-primary-medium"}`}
             >
               Create account
             </button>
@@ -116,20 +116,20 @@ export default function AuthPage({ initialMode }: AuthPageProps) {
           <form className="space-y-4" onSubmit={handleSubmit(submitForm)}>
             {mode === "register" && (
               <>
-                <label className="block space-y-1.5 text-sm font-medium text-primary">
+                <label className="block space-y-1.5 text-sm font-medium text-primary-medium">
                   Full name
                   <input
                     autoComplete="name"
-                    className="w-full rounded-md border border-border bg-white px-3 py-2.5 font-normal outline-none transition focus:border-secondary focus:ring-2 focus:ring-secondary/20"
+                    className="w-full rounded-md border border-surface-border-cool bg-surface px-3 py-2.5 font-normal outline-none transition focus:border-secondary focus:ring-2 focus:ring-secondary/20"
                     placeholder="Your name"
                     {...register("fullName", { required: "Enter your full name" })}
                   />
                   {errors.fullName && <span className="block text-xs font-normal text-danger">{errors.fullName.message}</span>}
                 </label>
-                <label className="block space-y-1.5 text-sm font-medium text-primary">
+                <label className="block space-y-1.5 text-sm font-medium text-primary-medium">
                   Account type
                   <select
-                    className="w-full rounded-md border border-border bg-white px-3 py-2.5 font-normal outline-none transition focus:border-secondary focus:ring-2 focus:ring-secondary/20"
+                    className="w-full rounded-md border border-surface-border-cool bg-surface px-3 py-2.5 font-normal outline-none transition focus:border-secondary focus:ring-2 focus:ring-secondary/20"
                     {...register("role", { required: "Choose an account type" })}
                   >
                     <option value="TENANT">I am looking to rent</option>
@@ -140,11 +140,11 @@ export default function AuthPage({ initialMode }: AuthPageProps) {
               </>
             )}
 
-            <label className="block space-y-1.5 text-sm font-medium text-primary">
+            <label className="block space-y-1.5 text-sm font-medium text-primary-medium">
               Email address
               <input
                 autoComplete="email"
-                className="w-full rounded-md border border-border bg-white px-3 py-2.5 font-normal outline-none transition focus:border-secondary focus:ring-2 focus:ring-secondary/20"
+                className="w-full rounded-md border border-surface-border-cool bg-surface px-3 py-2.5 font-normal outline-none transition focus:border-secondary focus:ring-2 focus:ring-secondary/20"
                 placeholder="you@example.com"
                 type="email"
                 {...register("email", {
@@ -155,11 +155,11 @@ export default function AuthPage({ initialMode }: AuthPageProps) {
               {errors.email && <span className="block text-xs font-normal text-danger">{errors.email.message}</span>}
             </label>
 
-            <label className="block space-y-1.5 text-sm font-medium text-primary">
+            <label className="block space-y-1.5 text-sm font-medium text-primary-medium">
               Password
               <input
                 autoComplete={mode === "login" ? "current-password" : "new-password"}
-                className="w-full rounded-md border border-border bg-white px-3 py-2.5 font-normal outline-none transition focus:border-secondary focus:ring-2 focus:ring-secondary/20"
+                className="w-full rounded-md border border-surface-border-cool bg-surface px-3 py-2.5 font-normal outline-none transition focus:border-secondary focus:ring-2 focus:ring-secondary/20"
                 placeholder="At least 8 characters"
                 type="password"
                 {...register("password", {
@@ -174,7 +174,7 @@ export default function AuthPage({ initialMode }: AuthPageProps) {
               <p className="text-sm text-danger" role="alert">{errors.root.server.message}</p>
             )}
             {successMessage && (
-              <p className={`text-sm ${isSuccess ? "text-green-700" : "text-danger"}`} role="status">
+              <p className={`text-sm ${isSuccess ? "text-success-green" : "text-danger"}`} role="status">
                 {successMessage}
               </p>
             )}
@@ -189,13 +189,13 @@ export default function AuthPage({ initialMode }: AuthPageProps) {
           </form>
 
           {isSuccess && (
-            <Link className="mt-4 block text-center text-sm font-semibold text-primary underline decoration-secondary underline-offset-4" href="/">
+            <Link className="mt-4 block text-center text-sm font-semibold text-primary-medium underline decoration-secondary underline-offset-4" href="/">
               Continue browsing
             </Link>
           )}
         </div>
 
-        <p className="mt-6 text-center text-xs text-neutral">
+        <p className="mt-6 text-center text-xs text-neutral-muted">
           By continuing, you agree to use Rent Estate responsibly.
         </p>
       </section>

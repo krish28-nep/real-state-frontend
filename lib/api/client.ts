@@ -2,6 +2,12 @@ import axios, { type AxiosError, type InternalAxiosRequestConfig } from "axios";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:4000";
 
+export function getMediaUrl(path: string | null | undefined): string | undefined {
+  if (!path) return undefined;
+  if (/^https?:\/\//i.test(path)) return path;
+  return `${BASE_URL.replace(/\/$/, "")}/${path.replace(/^\/+/, "")}`;
+}
+
 let accessToken: string | null = null;
 
 export function setAccessToken(token: string | null) {
